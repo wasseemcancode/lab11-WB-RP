@@ -2,69 +2,77 @@
 # Partner 1: Wasseem Barghouthi
 # Partner 2: Roman Perez
 
+
 import unittest
 from calculator import *
 
+
 class TestCalculator(unittest.TestCase):
-    #Partner 2
-    def test_add(self): # 3 assertions
-        self.assertEqual(add(1, 2), 3)
-        self.assertEqual(add(5, 0), 5)
-        self.assertEqual(add(-1, -1), -2)
+    def test_log_invalid_argument(self):
+       # log(0) is undefined
+       with self.assertRaises(ValueError):
+           logarithm(0, 5)
 
-    def test_subtract(self): # 3 assertions
-        self.assertEqual(subtract(5, 3), 2)
-        self.assertEqual(subtract(10, 0), 10)
-        self.assertEqual(subtract(0, 5), -5)
-    # ##########################
 
-    ######## Partner 1
-    def test_multiply(self):  # 3 assertions
-        self.assertEqual(mul(2, 3), 6)
-        self.assertEqual(mul(-2, 3), -6)
-        self.assertEqual(mul(0, 3), 0)
+       # negative argument
+       with self.assertRaises(ValueError):
+           logarithm(-10, 2)
 
-    def test_divide(self):  # 3 assertions
-        self.assertEqual(div(4, 2), 0.5)
-        self.assertEqual(div(-4, 2), -0.5)
-        self.assertRaises(ZeroDivisionError, div, 0, 0)
-    # ##########################
 
-    #Partner 2
-    def test_divide_by_zero(self): # 1 assertion
-    #     # call division function inside, example:
-        with self.assertRaises(ZeroDivisionError):
-            div(0, 10)  # a=0, b=10
-    #     fill in code
+       # invalid base (base <= 0 or base == 1)
+       with self.assertRaises(ValueError):
+           logarithm(100, 1)
 
-    def test_logarithm(self): # 3 assertions
-        self.assertAlmostEqual(logarithm(10, 100), 2.0)  # log_a(b)
-        self.assertAlmostEqual(logarithm(math.e, math.e), 1.0)
-        self.assertAlmostEqual(logarithm(4, 2), 0.5)
 
-    def test_log_invalid_base(self): # 1 assertion
-        with self.assertRaises(ValueError):
-            logarithm(0, 5)
-    # ##########################
-    
-    ######## Partner 1
-    def test_log_invalid_argument(self):  # 1 assertion
-        with self.assertRaises(ValueError):
-            logarithm(0, -5)
+    def test_hypotenuse(self):
+       # right triangle classic
+       self.assertEqual(hypotenuse(3, 4), 5)
 
-    def test_hypotenuse(self):  # 3 assertions
-        self.assertEqual(hypotenuse(3, 4), 5)
-        self.assertEqual(hypotenuse(-3, 4), 5)
-        self.assertEqual(hypotenuse(0, 2), 2)
 
-    def test_sqrt(self):  # 3 assertions
-        self.assertRaises(ValueError, square_root, -1)
-        self.assertEqual(square_root(0), 0)
-        self.assertEqual(square_root(4), 2)
-    ##########################
+       # floating point
+       self.assertAlmostEqual(hypotenuse(6.0, 8.0), 10.0)
 
-  
+
+       # invalid: negative side
+       with self.assertRaises(ValueError):
+           hypotenuse(-5, 12)
+
+
+    def test_sqrt(self):
+       # invalid argument: negative number
+       with self.assertRaises(ValueError):
+           square_root(-16)
+
+
+       # perfect square
+       self.assertEqual(square_root(81), 9)
+
+
+       # non-perfect square
+       self.assertAlmostEqual(square_root(3), 3**0.5)
+    def test_add(self):
+       self.assertEqual(add(4, 5), 9)
+       self.assertEqual(add(-2, 4), 2)
+       self.assertEqual(add(-2, -4), -6)
+
+
+    def test_divide_by_zero(self):
+       with self.assertRaises(ZeroDivisionError):
+           div(0, 3)
+      
+    def test_logarithm(self):
+       self.assertAlmostEqual(logarithm(100, 10), 2)
+       self.assertAlmostEqual(logarithm(27, 3), 3)
+       self.assertAlmostEqual(logarithm(49, 7), 2)
+      
+    def test_log_invalid_base(self):
+       with self.assertRaises(ValueError):
+           logarithm(5, 0)
+          
+
+
+
 
 # Do not touch this
 if __name__ == "__main__":
-    unittest.main()
+   unittest.main()
