@@ -1,10 +1,15 @@
-"""
-calculator.py
-- Defines functions used to create a simple calculator
+import math
 
-One function per operation, in order.
-"""
-# First example
+def square_root(a):
+    if a < 0:
+        raise ValueError
+    else:
+        return math.sqrt(a)
+
+def hypotenuse(a, b):
+    return math.hypot(a, b)
+
+
 import math
 
 def add(a, b): 
