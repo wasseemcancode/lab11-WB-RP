@@ -34,7 +34,7 @@ def div(a,b):
 def logarithm(a,b):
     if a == 0:
         raise ValueError
-    elif b == 0:
+    elif b == 0 or b == 1:
         raise ValueError
     else:
         return math.log(a,b)
