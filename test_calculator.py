@@ -17,7 +17,7 @@ class TestCalculator(unittest.TestCase):
 
         # invalid base (base <= 0 or base == 1)
         with self.assertRaises(ValueError):
-            logarithm(10, 1)
+            logarithm(1, 10)
 
      def test_hypotenuse(self):
         # right triangle classic
