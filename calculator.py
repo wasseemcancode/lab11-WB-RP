@@ -26,8 +26,7 @@ def mul(a, b):
 
 
 def div(a, b):
-    # Tests expect ZeroDivisionError when divisor is zero (b = 0)
-    if b == 0:
+    if a == 0 or b == 0:
         raise ZeroDivisionError
     return a / b
 
