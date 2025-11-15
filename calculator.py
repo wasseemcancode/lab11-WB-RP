@@ -1,3 +1,5 @@
+# https://github.com/wasseemcancode/lab11-WB-RP
+
 import math
 
 def square_root(a):
@@ -15,7 +17,7 @@ import math
 def add(a, b): 
     return a+ b
 
-def sub(a, b):
+def subtract(a, b):
     return a - b
 
 def mul(a,b):
@@ -27,7 +29,7 @@ def div(a,b):
     else:
         return b / a
     
-def log(a,b):
+def logarithm(a,b):
     if a == 0:
         raise ValueError
     else:
