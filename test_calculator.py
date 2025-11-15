@@ -9,15 +9,15 @@ class TestCalculator(unittest.TestCase):
      def test_log_invalid_argument(self):
         # log(0) is undefined
         with self.assertRaises(ValueError):
-            log(0, 5)
+            logarithm(0, 5)
 
         # negative argument
         with self.assertRaises(ValueError):
-            log(-10, 2)
+            logarithm(-10, 2)
 
         # invalid base (base <= 0 or base == 1)
         with self.assertRaises(ValueError):
-            log(10, 1)
+            logarithm(10, 1)
 
      def test_hypotenuse(self):
         # right triangle classic
@@ -50,13 +50,13 @@ class TestCalculator(unittest.TestCase):
             div(0, 3)
         
      def test_logarithm(self): 
-        self.assertAlmostEqual(log(100, 10), 2)
-        self.assertAlmostEqual(log(27, 3), 3)
-        self.assertAlmostEqual(log(49, 7), 2)
+        self.assertAlmostEqual(logarithm(100, 10), 2)
+        self.assertAlmostEqual(logarithm(27, 3), 3)
+        self.assertAlmostEqual(logarithm(49, 7), 2)
         
      def test_log_invalid_base(self): 
         with self.assertRaises(ValueError):
-            log(5, 0)
+            logarithm(5, 0)
 
   
 

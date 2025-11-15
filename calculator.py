@@ -9,6 +9,8 @@ def square_root(a):
         return math.sqrt(a)
 
 def hypotenuse(a, b):
+    if a < 0 or b < 0:
+        raise ValueError("Sides must be non-negative.")
     return math.hypot(a, b)
 
 
