@@ -1,55 +1,45 @@
+# https://github.com/wasseemcancode/lab11-WB-RP
+# Partner 1: Wasseem Barghouthi
+# Partner 2: Roman Perez
+
 import unittest
 from calculator import *
 
 class TestCalculator(unittest.TestCase):
-    ######### Partner 2
-    # def test_add(self): # 3 assertions
-    #     fill in code
+     def test_log_invalid_argument(self):
+        # log(0) is undefined
+        with self.assertRaises(ValueError):
+            log(0, 5)
 
-    # def test_subtract(self): # 3 assertions
-    #     fill in code
-    # ##########################
+        # negative argument
+        with self.assertRaises(ValueError):
+            log(-10, 2)
 
-    ######## Partner 1
-    # def test_multiply(self): # 3 assertions
-    #     fill in code
+        # invalid base (base <= 0 or base == 1)
+        with self.assertRaises(ValueError):
+            log(10, 1)
 
-    # def test_divide(self): # 3 assertions
-    #     fill in code
-    # ##########################
+     def test_hypotenuse(self):
+        # right triangle classic
+        self.assertEqual(hypotenuse(3, 4), 5)
 
-    ######## Partner 2
-    # def test_divide_by_zero(self): # 1 assertion
-    #     # call division function inside, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #     div(0, 5)
-    #     fill in code
+        # floating point
+        self.assertAlmostEqual(hypotenuse(6.0, 8.0), 10.0)
 
-    # def test_logarithm(self): # 3 assertions
-    #     fill in code
+        # invalid: negative side
+        with self.assertRaises(ValueError):
+            hypotenuse(-5, 12)
 
-    # def test_log_invalid_base(self): # 1 assertion
-    #     # use same technique from test_divide_by_zero
-    #     fill in code
-    # ##########################
-    
-    ######## Partner 1
-    # def test_log_invalid_argument(self): # 1 assertion
-    #     # call log function inside, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #     logarithm(0, 5)
-    #     fill in code
+     def test_sqrt(self):
+        # invalid argument: negative number
+        with self.assertRaises(ValueError):
+            square_root(-16)
 
-    # def test_hypotenuse(self): # 3 assertions
-    #     fill in code
+        # perfect square
+        self.assertEqual(square_root(81), 9)
 
-    # def test_sqrt(self): # 3 assertions
-    #     # Test for invalid argument, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #    square_root(NUM)
-    #     # Test basic function
-    #     fill in code
-    ##########################
+        # non-perfect square
+        self.assertAlmostEqual(square_root(3), 3**0.5)
 
 # Do not touch this
 if __name__ == "__main__":
