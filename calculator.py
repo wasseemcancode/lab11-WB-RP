@@ -26,10 +26,9 @@ def mul(a, b):
 
 
 def div(a, b):
-    if a == 0 or b == 0:
+    if b == 0:
         raise ZeroDivisionError
     return a / b
-
 
 def logarithm(a, b):
     # Tests expect: logarithm(base, argument) → log_base(argument)
